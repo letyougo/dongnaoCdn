@@ -15,14 +15,14 @@ var App = React.createClass({
     render : function () {
         return (
             <div>
-                aaaaa
-                {/*<FileList list={this.state.list}/>*/}
+                <FileList list={this.state.list}/>
             </div>
         )
     },
     componentDidMount:function () {
+        var that = this
         api.get({path:''},function (res) {
-            console.log(res)
+            that.setState({list:res})
         })
     }
 })

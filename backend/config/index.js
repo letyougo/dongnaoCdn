@@ -3,5 +3,5 @@
  */
 
 module.exports = {
-    rootDir: '/dongnaoCdn/cdn'
+    rootDir: '/dongnaoCdn'
 }

@@ -1,7 +1,7 @@
 /**
  * Created by surui on 2016/7/27.
  */
-var host = 'http://10.235.134.10:9527'
+var host = 'http://localhost:9527'
 
 exports.param = {
     host:host

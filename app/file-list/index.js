@@ -40,12 +40,32 @@ var getFileType = function (ext,bool) {
     }
 }
 
-var FileList = React.createClass({
-    render : function () {
+var FileItem = React.createClass({
+    render:function () {
+        var icon
+        if(this.props.IsDirectory){
+            icon = 'folder'
+        }else {
+            icon = getFileType(this.props.Ext)
+        }
 
         return (
-            <div className="file-list"  style={{display:this.props.display?'block':'none'}} onClick={this.handleClick}>
-                aaa
+            <li>
+                <Icon type={icon}/>
+                <span>{this.props.Name}</span>
+            </li>
+        )
+    }
+})
+
+var FileList = React.createClass({
+    render : function () {
+        var nodes = this.props.list.map(function (obj) {
+            return <FileItem Name={obj.Name} Path={obj.Path} IsDirectory={obj.IsDirectory} Ext={obj.Ext}/>
+        })
+        return (
+            <div className="file-list" onClick={this.handleClick}>
+                {nodes}
             </div>
         )
     },
