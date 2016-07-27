@@ -26,5 +26,6 @@ exports.mixin = {
             obj[name] = !that.state[name]
             that.setState(obj)
         }
+        console.log(111111)
     }
 }
