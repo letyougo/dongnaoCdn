@@ -1,0 +1,27 @@
+.file-error{
+    height: 500px;
+    width: 100%;
+    position: relative;
+
+    font-size: 0;
+    .error-content{
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -100px;
+        margin-top: -100px;
+        text-align: center;
+        color: #7f7f7f;
+
+        .content-icon{
+            line-height: 150px;
+            font-size: 100px;
+        }
+        .content-text{
+            line-height: 50px;
+            font-size: 16px;
+        }
+    }
+}
