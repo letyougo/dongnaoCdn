@@ -21,14 +21,20 @@ require('./index.css')
 var Route = ReactRouter.Route,
     Router = ReactRouter.Router,
     IndexRoute = ReactRouter.IndexRoute,
-    hashHistory = ReactRouter.hashHistory;
+    createHistory = require('history/lib/createHashHistory'),
+    ReactHistory = createHistory({ queryKey: false })
 
+global.ReactHistory = ReactHistory
 var App = require('./App')
+
+
+
+
 
 var R = React.createClass({
     render:function () {
         return (
-            <Router  history={ hashHistory } >
+            <Router  history={ ReactHistory } >
                 <IndexRoute path="/"  component={App}/>
                 <Route path="**"  component={App}/>
             </Router>
@@ -37,4 +43,4 @@ var R = React.createClass({
 })
 
 
-ReactDOM.render(<R/>,document.getElementById('app'))
+ReactDOM.render(<R/>,document.getElementById('root'))

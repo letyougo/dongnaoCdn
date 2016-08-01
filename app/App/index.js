@@ -5,8 +5,12 @@
 var FileList = require('../file-list'),
     config = require('../config'),
     api = require('../api')
+
+var pathModel = require('../model').pathModel
+
+require('./index.less')
 var App = React.createClass({
-    mixins:config.mixin,
+    mixins:[config.mixin],
     getInitialState:function () {
         return {
             list:[]
@@ -14,16 +18,26 @@ var App = React.createClass({
     },
     render : function () {
         return (
-            <div>
+            <div className="app">
+                <h3>{this.props.location.pathname}</h3>
                 <FileList list={this.state.list}/>
             </div>
         )
     },
     componentDidMount:function () {
         var that = this
-        api.get({path:''},function (res) {
-            that.setState({list:res})
+
+        this.listenTo(pathModel,'change',function () {
+            var p = pathModel.get('path')
+            api.get({path:p},function (res) {
+                that.setState({list:res})
+            })
         })
+
+        pathModel.set('path',this.props.params.splat)
+    },
+    componentWillReceiveProps:function (nextProps) {
+        pathModel.set('path',nextProps.params.splat)
     }
 })
 

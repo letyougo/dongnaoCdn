@@ -11,9 +11,9 @@ var express = require('express'),
     path = require('path');
 
 
-mongoose.connect('mongodb://127.0.0.1:27017/mi-team');
+// mongoose.connect('mongodb://127.0.0.1:27017/mi-team');
 
-app.use(express.static(path.join(__dirname, 'static')));
+app.use(express.static('/home'));
 app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

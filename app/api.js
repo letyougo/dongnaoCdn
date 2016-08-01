@@ -13,6 +13,11 @@ exports.get = function (query,success) {
         .query(query)
         .end(function (err,res) {
             if(err){return console.log(err)}
-            success(res.body)
+            var data = res.body.map(function (obj) {
+                obj.Path = obj.Path.split('\\').join('/')
+                return obj
+            })
+            console.log(data)
+            success(data)
         })
 }

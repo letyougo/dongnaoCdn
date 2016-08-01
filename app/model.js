@@ -13,3 +13,13 @@ var fileList = Backbone.Collection.extend({
 })
 
 exports.fileList = new fileList()
+
+var pathModel = Backbone.Model.extend({
+    defaults:{
+        path : []
+    },
+    push:function () {
+        //this.get('path')
+    }
+})
+exports.pathModel = new pathModel()

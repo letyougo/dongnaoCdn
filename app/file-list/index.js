@@ -3,7 +3,7 @@
  */
 
 
-
+require('./index.less')
 
 var getFileType = function (ext,bool) {
     if(bool){
@@ -50,11 +50,18 @@ var FileItem = React.createClass({
         }
 
         return (
-            <li>
-                <Icon type={icon}/>
-                <span>{this.props.Name}</span>
+            <li className="file-item" onClick={this.handleClick}>
+                <span className="file-item-icon"><Icon type={icon}/></span>
+                <span className="file-item-name">{this.props.Name}</span>
             </li>
         )
+    },
+    handleClick:function () {
+        if(this.props.IsDirectory){
+            ReactHistory.push(this.props.Path)
+        }else {
+            window.open('http://localhost:9527/'+this.props.Path)
+        }
     }
 })
 
