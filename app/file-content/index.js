@@ -7,6 +7,7 @@ require('./index.less')
 import {mixin} from '../config'
 import {Tooltip} from 'antd'
 import {pathModel} from '../model'
+import {param} from '../config'
 var getFileType = function (ext,bool) {
     if(bool){
         return 'folder'
@@ -73,7 +74,7 @@ var FileItem = React.createClass({
         if(this.props.IsDirectory){
             ReactHistory.push(this.props.Path)
         }else {
-            window.open('http://localhost:9527/'+this.props.Path)
+            window.open(param.host+'/'+this.props.Path)
         }
     }
 })
