@@ -3,6 +3,6 @@
  */
 
 module.exports = {
-    //rootDir: '/Users/xiaoxiaosu/Documents/test-static/secStatic/',
+    //rootDir: '/Users/',
     rootDir:'/root/'
 }

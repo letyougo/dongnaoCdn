@@ -13,12 +13,14 @@ var express = require('express'),
 
 // mongoose.connect('mongodb://127.0.0.1:27017/mi-team');
 
-app.use(express.static('/home'));
+
 app.set('view engine', 'ejs');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-
+app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static('/root/'))
 // app.use(session({
 //     secret: 'mi-team',
 //     cookie: { maxAge: 60 * 1000 * 60 },
@@ -43,7 +45,11 @@ app.all('*', function (req, res, next){
     next()
 });
 
+app.get('/hello',function (req,res) {
+    res.render('index')
+})
 var fileMiddle = require('./middleWare/file')
 app.use('/file',fileMiddle)
+
 
 app.listen(9527)

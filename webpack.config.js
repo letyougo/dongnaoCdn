@@ -9,7 +9,7 @@ var path = require('path'),
 
 var PATH = {
     app: path.join(__dirname, 'app'),
-    build: path.join(__dirname, 'build')
+    build: path.join(__dirname, 'backend/build')
 }
 
 
