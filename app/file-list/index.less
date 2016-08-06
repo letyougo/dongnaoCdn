@@ -1,0 +1,72 @@
+.file-list{
+
+
+  position: absolute;
+  padding: 20px;
+  left: 0;
+  right: 0;
+  top: 50px;
+  bottom: 0;
+  width: auto;
+  &:after{
+    clear: both;
+  }
+
+  .file-item{
+    width: 150px;
+    height: 100px;
+    font-size: 20px;
+    transition: 0.3s;
+    cursor: pointer;
+    border-radius: 4px;
+    float: left;
+
+    span{
+      display: block;
+      color: #000000;
+      text-align: center;
+
+      &.file-item-icon{
+        color: #787878;
+        line-height: 70px;
+        font-size: 30px;
+      }
+
+      &.file-item-name{
+        line-height: 30px;
+        font-size: 14px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 150px;
+        padding: 0 10px;
+      }
+
+      img{
+        vertical-align: middle;
+      }
+    };
+
+    &:hover{
+      background: #03d1ff;
+      span{
+        color: #ffffff;
+      }
+    }
+
+    &.admin{
+      background: #f0ad4e;
+      span{
+        color: #ffffff;
+      }
+    }
+
+
+    &.active{
+      background: #00B7FF;
+      span{
+        color: #ffffff;
+      }
+    }
+  }
+}
