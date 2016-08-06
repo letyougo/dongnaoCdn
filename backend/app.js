@@ -16,11 +16,13 @@ var express = require('express'),
 
 app.set('view engine', 'ejs');
 
+var rootDir = require('./config').rootDir
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'build')));
-app.use(express.static('/root/'))
+
+app.use(express.static(rootDir))
 // app.use(session({
 //     secret: 'mi-team',
 //     cookie: { maxAge: 60 * 1000 * 60 },

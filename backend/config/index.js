@@ -4,5 +4,5 @@
 
 module.exports = {
     //rootDir: '/Users/',
-    rootDir:'/root/'
+    rootDir:'/Users/xiaoxiaosu/'
 }
