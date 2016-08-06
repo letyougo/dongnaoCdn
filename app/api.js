@@ -6,7 +6,7 @@ var config = require('./config'),
     host = config.param.host
 
 var get = host + '/file/get'
-console.log(get)
+
 exports.get = function (query,success) {
     request
         .get(get)
@@ -17,7 +17,7 @@ exports.get = function (query,success) {
                 obj.Path = obj.Path.split('\\').join('/')
                 return obj
             })
-            console.log(data)
+
             success(data)
         })
 }

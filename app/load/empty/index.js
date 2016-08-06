@@ -2,7 +2,7 @@
  * Created by surui on 2016/6/14.
  */
 
-require('./index.scss')
+require('./index.less')
 var Icon = antd.Icon
 var FileEmpty = React.createClass({
     render : function () {

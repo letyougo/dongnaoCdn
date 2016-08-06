@@ -69,7 +69,7 @@ var FileItem = React.createClass({
         )
     },
     handleClick:function () {
-        console.log(this.props.Path)
+
         if(this.props.IsDirectory){
             ReactHistory.push(this.props.Path)
         }else {
@@ -84,7 +84,7 @@ var FileList = React.createClass({
             return <FileItem Name={obj.Name} Path={obj.Path} IsDirectory={obj.IsDirectory} Ext={obj.Ext} key={pathModel.get("path")+'-'+obj.Name}/>
         })
         return (
-            <div className="file-list" onClick={this.handleClick}>
+            <div className="file-list" onClick={this.handleClick} style={{display:this.props.display?'block':"none"}}>
                 {nodes}
             </div>
         )
@@ -92,8 +92,23 @@ var FileList = React.createClass({
 
 })
 
+import Loading from '../load/loading'
+import Empty from '../load/empty'
+import Error from '../load/error'
 
 
+var FileContent = React.createClass({
+    render:function () {
+        return (
+            <div className="file-content">
+                <Loading display={this.props.loading}/>
+                <Empty display={this.props.empty}/>
+                <Error display={this.props.error}/>
+                <FileList list={this.props.list} display={this.props.showList}/>
+            </div>
+        )
+    }
+})
 
 
-module.exports = FileList
+module.exports = FileContent

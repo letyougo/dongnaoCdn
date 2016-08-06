@@ -1,8 +1,8 @@
 /**
  * Created by surui on 2016/7/27.
  */
-var host = 'http://localhost:9527',
-    host = 'http://101.200.129.112:9527'
+var host = 'http://localhost:9527'
+// var host = 'http://101.200.129.112:9527'
 
 exports.param = {
     host:host
@@ -27,6 +27,6 @@ exports.mixin = {
             obj[name] = !that.state[name]
             that.setState(obj)
         }
-        console.log(111111)
+
     }
 }

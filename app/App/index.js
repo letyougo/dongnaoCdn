@@ -4,20 +4,24 @@
 
 
 
-import FileList from '../file-list'
+import Filecontent from '../file-content'
 import CrumbList from '../crumb-list'
 import RightKeyMenu from "../rightkey-menu"
 import config from '../config'
 import api from '../api'
 
-import {pathModel,rightKeyModel} from '../model'
+import {pathModel,rightKeyModel,loadModel} from '../model'
 
 import './index.less'
 var App = React.createClass({
     mixins:[config.mixin],
     getInitialState:function () {
         return {
-            list:[]
+            list:[],
+            loading:loadModel.get('loading'),
+            error:loadModel.get('error'),
+            empty:loadModel.get('emtpy'),
+            showList:loadModel.get('showList')
         }
     },
     render : function () {
@@ -25,7 +29,7 @@ var App = React.createClass({
             <div className="app" onContextMenu={this.contextMenu} onMouseDown={this.mousedown} >
                 <h3>小小苏的阿里云</h3>
                 <CrumbList/>
-                <FileList list={this.state.list}/>
+                <Filecontent list={this.state.list} loading={this.state.loading} empty={this.state.empty} error={this.state.error} showList={this.state.showList}/>
                 <RightKeyMenu/>
             </div>
         )
@@ -43,8 +47,23 @@ var App = React.createClass({
 
         this.listenTo(pathModel,'change',function () {
             var p = pathModel.get('path')
+            loadModel.show('loading')
             api.get({path:p},function (res) {
-                that.setState({list:res})
+                if(res.length == 0){
+                    loadModel.show('empty')
+                }else {
+                    loadModel.show('list')
+                    that.setState({list:res})
+                }
+            })
+        })
+
+        this.listenTo(loadModel,'change',function () {
+            that.setState({
+                loading:loadModel.get('loading'),
+                error:loadModel.get('error'),
+                empty:loadModel.get('emtpy'),
+                showList:loadModel.get('list')
             })
         })
 

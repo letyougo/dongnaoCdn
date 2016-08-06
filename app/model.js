@@ -41,4 +41,26 @@ var rightKey = Backbone.Model.extend({
     }
 })
 
+
 exports.rightKeyModel = new rightKey()
+
+var loadModel = Backbone.Model.extend({
+    defaults:{
+        loading:false,
+        error:false,
+        empty:false,
+        list:true
+    },
+    show:function (type) {
+        var obj = {
+            loading:false,
+            error:false,
+            empty:false,
+            list:false
+        }
+        obj[type] = true
+        this.set(obj)
+    }
+})
+
+exports.loadModel = new loadModel()
