@@ -3,5 +3,5 @@
  */
 
 module.exports = {
-    rootDir: '/home/'
+    rootDir: '/Users/xiaoxiaosu/Documents/test-static/secStatic/'
 }
