@@ -6,7 +6,7 @@ var express = require('express'),
     session = require('express-session'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
-    MongoStore = require('connect-mongo')(session),
+    //MongoStore = require('connect-mongo')(session),
     mongoose = require('mongoose'),
     path = require('path');
 
@@ -19,15 +19,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.use(session({
-    secret: 'mi-team',
-    cookie: { maxAge: 60 * 1000 * 60 },
-    resave: true,
-    saveUninitialized: true,
-    store: new MongoStore({
-        url: 'mongodb://127.0.0.1:27017/mi-team'
-    })
-}));
+// app.use(session({
+//     secret: 'mi-team',
+//     cookie: { maxAge: 60 * 1000 * 60 },
+//     resave: true,
+//     saveUninitialized: true,
+//     store: new MongoStore({
+//         url: 'mongodb://127.0.0.1:27017/mi-team'
+//     })
+// }));
 
 
 
