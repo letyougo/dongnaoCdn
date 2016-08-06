@@ -23,3 +23,22 @@ var pathModel = Backbone.Model.extend({
     }
 })
 exports.pathModel = new pathModel()
+
+var rightKey = Backbone.Model.extend({
+    defaults: {
+        display: false,
+        pos : {x:0,y:0},
+        privateFolderAction:true
+    },
+    show : function (pos) {
+        this.set({
+            display:true,
+            pos : pos
+        })
+    },
+    hide : function () {
+        this.set('display',false)
+    }
+})
+
+exports.rightKeyModel = new rightKey()

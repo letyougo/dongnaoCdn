@@ -1,0 +1,35 @@
+.rightkey-menu{
+    position: absolute;
+    left: 200px;
+    top: 200px;
+
+    li{
+        line-height: 30px;
+        width: 150px;
+        border: 1px solid #cccccc;
+        border-bottom: none;
+        text-indent: 15px;
+        cursor: pointer;
+        transition: 0.3s;
+        background: #ffffff;
+
+        &:first-child{
+            border-radius: 10px 10px 0 0;
+        }
+
+        &:last-child{
+            border-bottom: 1px solid #cccccc;
+            border-radius: 0 0 10px 10px;
+        }
+
+        &:hover{
+            background: #00B7FF;
+            color: #ffffff;
+        }
+        &.forbidden{
+            cursor: not-allowed;
+            background: #ffffff;
+            color: #bbbbbb;
+        }
+    }
+}

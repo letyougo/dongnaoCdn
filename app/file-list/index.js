@@ -4,7 +4,9 @@
 
 
 require('./index.less')
-
+import {mixin} from '../config'
+import {Tooltip} from 'antd'
+import {pathModel} from '../model'
 var getFileType = function (ext,bool) {
     if(bool){
         return 'folder'
@@ -41,6 +43,12 @@ var getFileType = function (ext,bool) {
 }
 
 var FileItem = React.createClass({
+    mixins:[mixin],
+    getInitialState(){
+        return {
+            name : this.props.Name
+        }
+    },
     render:function () {
         var icon
         if(this.props.IsDirectory){
@@ -49,14 +57,19 @@ var FileItem = React.createClass({
             icon = getFileType(this.props.Ext)
         }
 
+
         return (
             <li className="file-item" onClick={this.handleClick}>
                 <span className="file-item-icon"><Icon type={icon}/></span>
-                <span className="file-item-name">{this.props.Name}</span>
+                <p>
+                    <span className="file-item-name" style={{display:this.props.edit?'none':'block'}}>{this.state.name}</span>
+                    <span className="file-item-input" style={{display:this.props.edit?'block':'none'}}><Input ref="input"  onBlur={this.handleBlur} onChange={this.updateState.bind(this,'value')} onPressEnter={this.handleEnter} value={this.state.value}/></span>
+                </p>
             </li>
         )
     },
     handleClick:function () {
+        console.log(this.props.Path)
         if(this.props.IsDirectory){
             ReactHistory.push(this.props.Path)
         }else {
@@ -68,7 +81,7 @@ var FileItem = React.createClass({
 var FileList = React.createClass({
     render : function () {
         var nodes = this.props.list.map(function (obj) {
-            return <FileItem Name={obj.Name} Path={obj.Path} IsDirectory={obj.IsDirectory} Ext={obj.Ext}/>
+            return <FileItem Name={obj.Name} Path={obj.Path} IsDirectory={obj.IsDirectory} Ext={obj.Ext} key={pathModel.get("path")+'-'+obj.Name}/>
         })
         return (
             <div className="file-list" onClick={this.handleClick}>
