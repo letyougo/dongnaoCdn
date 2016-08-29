@@ -8,6 +8,7 @@ var router = require('express').Router(),
     config = require('../config');
 
 router.post('/webhook',function (req, res) {
+    console.log('gitlab request come in')
     console.log(req)
     res.send(req)
 })
