@@ -8,8 +8,8 @@ var router = require('express').Router(),
     config = require('../config');
 
 router.post('/webhook',function (req, res) {
-    console.log(req.body)
-    res.send(req.body)
+    console.log(req)
+    res.send(req)
 })
 
 router.get('/webhook',function (req, res) {
