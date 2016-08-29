@@ -50,8 +50,8 @@ app.all('*', function (req, res, next){
 app.get('/hello',function (req,res) {
     res.render('index')
 })
-var fileMiddle = require('./middleWare/file')
+var fileMiddle = require('./middleWare/file'),
+    webhook = require('./middleWare/webhook')
 app.use('/file',fileMiddle)
-
-
+app.use('/webhook',webhook)
 app.listen(9527)
